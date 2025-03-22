@@ -1,3 +1,4 @@
+/* Main Body */
 body {
   margin: 0;
   padding: 0;
@@ -7,29 +8,131 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+/* Container */
+.container {
+  width: 100vw;
+  height: 100vh;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* Star animation */
+/* Stars Container */
+.stars-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform: translate(var(--bg-move-x, 0px), var(--bg-move-y, 0px));
+  transition: transform 0.08s linear;
+}
+
+/* Star Styling */
 .star {
   position: absolute;
-  width: 2px;
-  height: 2px;
   background-color: white;
   border-radius: 50%;
-  animation: twinkle 3s infinite alternate;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  animation: twinkle infinite alternate ease-in-out;
 }
+
 @keyframes twinkle {
-  0% { opacity: 0.2; transform: scale(1); filter: drop-shadow(0 0 3px white); }
-  50% { opacity: 1; transform: scale(1.4); filter: drop-shadow(0 0 10px white); }
-  100% { opacity: 0.2; transform: scale(1); filter: drop-shadow(0 0 3px white); }
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
 }
 
-.star {
+/* Profile Container */
+.profile-container {
   position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  animation: twinkle linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
+/* Profile Picture */
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
 
+/* Orbit Container */
+.orbit-container {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Orbit Paths */
+/* Outer Orbit */
+.orbit {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border: 2.5px dashed rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateClockwise 10s linear infinite;
+}
+
+/* Inner Orbit */
+.orbit.inner {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  animation: rotateCounterClockwise 8s linear infinite;
+}
+
+/* Position Icons Around the Outer Orbit */
+.orbit .icon1 { transform: translate(175px, 0); }  /* React */
+.orbit .icon2 { transform: translate(-175px, 0); } /* Node.js */
+.orbit .icon3 { transform: translate(0, 175px); }  /* Java */
+.orbit .icon4 { transform: translate(0, -175px); } /* JavaScript */
+
+/* Position Icons Around the Inner Orbit */
+.orbit.inner .icon5 { transform: translate(140px, 0); }   /* MongoDB */
+.orbit.inner .icon6 { transform: translate(-140px, 0); }  /* MySQL */
+.orbit.inner .icon7 { transform: translate(0, 140px); }   /* Git */
+.orbit.inner .icon8 { transform: translate(0, -140px); }  /* GitHub */
+.orbit.inner .icon9 { transform: translate(100px, 100px); } /* Spring Boot */
+
+/* Keyframes for Rotating Orbit */
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Orbiting Icons */
+.orbit-icon {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  color: white;
+}
