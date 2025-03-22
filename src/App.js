@@ -14,12 +14,12 @@ const App = () => {
       id: i,
       top: Math.random() * 100,
       left: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      animationDuration: Math.random() * 3 + 2 + "s",
+      size: Math.random() * 3 + 1, // More variation in size
+      animationDuration: (Math.random() * 1.5 + 1) + "s", // Faster blinking
     }));
     setStars(starElements);
   }, []);
-
+  
   useEffect(() => {
     const updateBackground = () => {
       document.documentElement.style.setProperty("--bg-move-x", `${backgroundOffset.current.x}px`);

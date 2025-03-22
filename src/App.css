@@ -34,23 +34,23 @@ body {
 }
 
 /* Star Styling */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.2);
+  }
+}
+
 .star {
   position: absolute;
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
   animation: twinkle infinite alternate ease-in-out;
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.9;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(1.1);
-  }
 }
 
 /* Profile Container */
@@ -94,7 +94,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: rotateClockwise 10s linear infinite;
+  animation: rotateClockwise 18s linear infinite;
 }
 
 /* Inner Orbit */
@@ -102,21 +102,30 @@ body {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  animation: rotateCounterClockwise 8s linear infinite;
+  animation: rotateCounterClockwise 14s linear infinite;
 }
 
-/* Position Icons Around the Outer Orbit */
-.orbit .icon1 { transform: translate(175px, 0); }  /* React */
-.orbit .icon2 { transform: translate(-175px, 0); } /* Node.js */
-.orbit .icon3 { transform: translate(0, 175px); }  /* Java */
-.orbit .icon4 { transform: translate(0, -175px); } /* JavaScript */
+/* Positioning Icons at Equal Intervals */
+.orbit-icon {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  color: white;
+  transform-origin: center;
+}
 
-/* Position Icons Around the Inner Orbit */
-.orbit.inner .icon5 { transform: translate(140px, 0); }   /* MongoDB */
-.orbit.inner .icon6 { transform: translate(-140px, 0); }  /* MySQL */
-.orbit.inner .icon7 { transform: translate(0, 140px); }   /* Git */
-.orbit.inner .icon8 { transform: translate(0, -140px); }  /* GitHub */
-.orbit.inner .icon9 { transform: translate(100px, 100px); } /* Spring Boot */
+/* Outer Orbit Icons (Evenly Distributed) */
+.orbit .icon1 { transform: rotate(0deg) translate(175px) rotate(0deg); }  
+.orbit .icon2 { transform: rotate(90deg) translate(175px) rotate(-90deg); }  
+.orbit .icon3 { transform: rotate(180deg) translate(175px) rotate(-180deg); }  
+.orbit .icon4 { transform: rotate(270deg) translate(175px) rotate(-270deg); }  
+
+/* Inner Orbit Icons (Evenly Distributed) */
+.orbit.inner .icon5 { transform: rotate(0deg) translate(140px) rotate(0deg); }  
+.orbit.inner .icon6 { transform: rotate(72deg) translate(140px) rotate(-72deg); }  
+.orbit.inner .icon7 { transform: rotate(144deg) translate(140px) rotate(-144deg); }  
+.orbit.inner .icon8 { transform: rotate(216deg) translate(140px) rotate(-216deg); }  
+.orbit.inner .icon9 { transform: rotate(288deg) translate(140px) rotate(-288deg); }  
 
 /* Keyframes for Rotating Orbit */
 @keyframes rotateClockwise {
@@ -129,10 +138,3 @@ body {
   to { transform: rotate(0deg); }
 }
 
-/* Orbiting Icons */
-.orbit-icon {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  color: white;
-}
